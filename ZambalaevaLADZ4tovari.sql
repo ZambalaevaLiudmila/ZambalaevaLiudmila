@@ -1,31 +1,31 @@
---create database DZ4product;
---create table providers (id serial primary key,
---name_providers varchar, address_providers text);
---insert into providers (name_providers, address_providers)
---values ('ООО Ромашка', 'г. Буржуев, ул. Пушкина, д. 8'),
---('ООО Березка', 'г. Грехов, ул. Ломоносова, д. 190'),
---('ООО Березка', 'г. Павлодар, ул. Ленина, д. 1');
---create table customers (id serial primary key,
---name_customers varchar, address_customers text);
---insert into customers (name_customers, address_customers)
---values ('ООО Рога и Копыта', 'г. Деревянный, ул. Смирнова, д. 4');
---create table payment (id serial primary key, payment_type varchar);
---insert into payment (payment_type)
---values ('Наложенный платеж'), ('Безналичный платеж'), ('Наличный платеж');
---create table products (id serial primary key,
---items varchar,
---price numeric(10,2),
---provider int references providers(id), 
---stock_balance int4,
---payment int references payment(id),
---customer int references customers(id),
---orders int4);
---insert into products (items, price, provider, 
---stock_balance, payment, customer, orders)
---values 
---('Зубная паста', 25.00, 1, 100, 1, 1, 100),
---('Зубная нить', 300.00, 1, 34, 2, 1, 34),
---('Ручки шариковые', 12.00, 1, 55, 3, 1, 55),
---('Вода минеральная', 150.00, 2, 2, 3, 1, 2),
---('Вода минеральная', 500.00, 3, 350, 2, 1, 300);
+create database DZ4product;
+create table providers (id serial primary key,
+name_providers varchar, address_providers text);
+insert into providers (name_providers, address_providers)
+values ('ГЋГЋГЋ ГђГ®Г¬Г ГёГЄГ ', 'ГЈ. ГЃГіГ°Г¦ГіГҐГў, ГіГ«. ГЏГіГёГЄГЁГ­Г , Г¤. 8'),
+('ГЋГЋГЋ ГЃГҐГ°ГҐГ§ГЄГ ', 'ГЈ. ГѓГ°ГҐГµГ®Гў, ГіГ«. Г‹Г®Г¬Г®Г­Г®Г±Г®ГўГ , Г¤. 190'),
+('ГЋГЋГЋ ГЃГҐГ°ГҐГ§ГЄГ ', 'ГЈ. ГЏГ ГўГ«Г®Г¤Г Г°, ГіГ«. Г‹ГҐГ­ГЁГ­Г , Г¤. 1');
+create table customers (id serial primary key,
+name_customers varchar, address_customers text);
+insert into customers (name_customers, address_customers)
+values ('ГЋГЋГЋ ГђГ®ГЈГ  ГЁ ГЉГ®ГЇГ»ГІГ ', 'ГЈ. Г„ГҐГ°ГҐГўГїГ­Г­Г»Г©, ГіГ«. Г‘Г¬ГЁГ°Г­Г®ГўГ , Г¤. 4');
+create table payment (id serial primary key, payment_type varchar);
+insert into payment (payment_type)
+values ('ГЌГ Г«Г®Г¦ГҐГ­Г­Г»Г© ГЇГ«Г ГІГҐГ¦'), ('ГЃГҐГ§Г­Г Г«ГЁГ·Г­Г»Г© ГЇГ«Г ГІГҐГ¦'), ('ГЌГ Г«ГЁГ·Г­Г»Г© ГЇГ«Г ГІГҐГ¦');
+create table products (id serial primary key,
+items varchar,
+price numeric(10,2),
+provider int references providers(id), 
+stock_balance int4,
+payment int references payment(id),
+customer int references customers(id),
+orders int4);
+insert into products (items, price, provider, 
+stock_balance, payment, customer, orders)
+values 
+('Г‡ГіГЎГ­Г Гї ГЇГ Г±ГІГ ', 25.00, 1, 100, 1, 1, 100),
+('Г‡ГіГЎГ­Г Гї Г­ГЁГІГј', 300.00, 1, 34, 2, 1, 34),
+('ГђГіГ·ГЄГЁ ГёГ Г°ГЁГЄГ®ГўГ»ГҐ', 12.00, 1, 55, 3, 1, 55),
+('Г‚Г®Г¤Г  Г¬ГЁГ­ГҐГ°Г Г«ГјГ­Г Гї', 150.00, 2, 2, 3, 1, 2),
+('Г‚Г®Г¤Г  Г¬ГЁГ­ГҐГ°Г Г«ГјГ­Г Гї', 500.00, 3, 350, 2, 1, 300);
 select * from products;
