@@ -117,15 +117,15 @@
 --(13.8),
 --(12.4);
 
---insert into workers (name_table, position, salary, project, type_of_penalty, director)
---values 
---('ca601520-3309-4088-a5db-2a263ef990f6', 1, 1, 1, 1, 1);
---('d81373f6-142b-4159-83dc-a5770b3d98a7', 2, 1, 1, NULL, 1),
---('5c35ae00-7524-4374-81b7-7b47ac7b27c8', 3, 2, 2, NULL, 2),
---('413d052e-1ed3-4421-9396-6ef659619912', 4, 3, 2, 1, 2),
---('c81ee1d1-6580-4e3f-adc2-fbc94cc0aff6', 5, 4, 3, 2, 3),
---('7ae7a708-6e44-4b05-b20e-fe56cb876416', 6, 5, 3, 3, 3),
---('dd723d04-4f80-48bd-a4f6-fcad16281982', 7, 6, 4, 4, 4),
---('14090951-cea2-4a86-a8a2-d97f56edadd6', 8, 7, 4, 3, 4),
---('bfa18a37-85d3-4517-b938-a8004cbd2e44', 9, 2, 5, 2, 5),
---('61119db4-db03-456d-bbb0-897501590cef', 10, 3, 5, 1, 5);
+insert into workers (name_table, position, salary, project, type_of_penalty, director)
+values 
+((select id from players where first_name = 'Роман'), 1, 1, 1, 1, 1);
+((select id from players where last_name = 'Акинфеев'), 2, 1, 1, NULL, 1),
+((select id from players where last_name = 'Алвин'), 3, 2, 2, NULL, 2),
+((select id from players where last_name = 'Ахметов'), 4, 3, 2, 1, 2),
+((select id from players where last_name = 'Баринов'), 5, 4, 3, 2, 3),
+((select id from players where last_name = 'Глебов'), 6, 5, 3, 3, 3),
+((select id from players where last_name = 'Головин'), 7, 6, 4, 4, 4),
+((select id from players where last_name = 'Дивеев'), 8, 7, 4, 3, 4),
+((select id from players where last_name = 'Ерохин'), 9, 2, 5, 2, 5),
+((select id from players where last_name = 'Караваев'), 10, 3, 5, 1, 5);
