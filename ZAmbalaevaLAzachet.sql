@@ -18,7 +18,7 @@ insert into country (place_name)
 	;
 create table directors (
 	primary key (id),
-	id 			serial, 
+	id 		serial, 
 	full_name 	varchar,
 	birthday 	date, 
 	reward 		text
@@ -33,7 +33,7 @@ insert into directors (full_name, birthday, reward)
 	;
 create table grade (
 	primary key (id),
-	id 			int 	not  null , 
+	id 		int 		not  null , 
 	title 		varchar
 	);
 insert into grade (id, title) 
@@ -48,8 +48,8 @@ insert into grade (id, title)
 	;
 create table genre (
 	primary key (id),
-	id 						serial 		not null, 
-	title_of_genre 			varchar, 
+	id 			serial 		not null, 
+	title_of_genre 		varchar, 
 	description_of_genre 	text
 	); 
 insert into genre (title_of_genre, description_of_genre) 	
@@ -70,7 +70,7 @@ insert into genre (title_of_genre, description_of_genre)
 	; 
 create table film_list (
 	primary key (id),
-	id 			serial 		not null,  
+	id 		serial 		not null,  
 	title 		varchar, 
 	description text, 
 	country 	int 		references country (id), 
@@ -112,9 +112,9 @@ insert into film_list (title, description, country, director, actors, year, film
 ; 
 create table subscription (
 	primary key (id),
-	id 			serial 		not null, 
+	id 		serial 		not null, 
 	title 		varchar, 
-	description text,
+	description 	text,
 	price 		numeric (10, 2)
 );
 insert into subscription (title, description, price) 
@@ -127,10 +127,10 @@ insert into subscription (title, description, price)
 	; 
 create table news (
 	primary key (id),
-	id 				serial 			not null, 
+	id 			serial 			not null, 
 	title 			varchar, 
 	news 			text, 
-	date_of_news 	date, 
+	date_of_news 		date, 
 	film_tag 		int 			references film_list(id)
 ); 
 insert into news (title, news, date_of_news, film_tag) 	
@@ -173,13 +173,13 @@ insert into news (title, news, date_of_news, film_tag)
 	; 
 create table private_office (
 	primary key (id),
-	id 					uuid 			DEFAULT gen_random_uuid(), 
-	name 				varchar, 
-	surname 			varchar, 
-	birth 				date, 
-	email 				varchar, 
+	id 			uuid 			DEFAULT gen_random_uuid(), 
+	name 			varchar, 
+	surname 		varchar, 
+	birth 			date, 
+	email 			varchar, 
 	user_subscription 	int 			references subscription(id), 
-	payment 			boolean, 
+	payment 		boolean, 
 	favorite_films 		int 			references film_list(id) 
 ); 
 insert into private_office (name , surname , birth , email, user_subscription , payment , favorite_films)
@@ -193,7 +193,7 @@ insert into private_office (name , surname , birth , email, user_subscription , 
 update private_office set favorite_films = 2 where email = 'petrov85al@mail.ru';
 create table comments (
 	primary key (id),
-	id 			serial 		not null,  
+	id 		serial 		not null,  
 	user_name 	uuid 		DEFAULT gen_random_uuid() 		references private_office(id),
 	film 		int 		references film_list(id), 
 	grade 		int 		references grade(id), 
@@ -261,11 +261,11 @@ select
 	comments.comment
 from comments
 	right 	join private_office 	on comments.user_name 				= private_office.id 
-	right 	join subscription 		on private_office.user_subscription = subscription.id
-	right 	join film_list 			on private_office.favorite_films 	= film_list.id
-	right 	join grade 				on film_list.film_grade 			= grade.id
-	right 	join country 			on film_list.country 				= country.id
-	right 	join directors 			on film_list.director 				= directors.id  
-	right 	join genre 				on film_list.film_genre 			= genre.id 
-	left 	join news 				on film_list.id 					= news.film_tag
+	right 	join subscription 	on private_office.user_subscription 		= subscription.id
+	right 	join film_list 		on private_office.favorite_films 		= film_list.id
+	right 	join grade 		on film_list.film_grade 			= grade.id
+	right 	join country 		on film_list.country 				= country.id
+	right 	join directors 		on film_list.director 				= directors.id  
+	right 	join genre 		on film_list.film_genre 			= genre.id 
+	left 	join news 		on film_list.id 				= news.film_tag
 	;
