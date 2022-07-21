@@ -3,8 +3,8 @@ set datestyle
 	to iso,dmy;
 create table country (
 	primary key (id),
-	id 			serial 	not null , 
-	place_name  varchar
+	id 		serial 	not null , 
+	place_name  	varchar
 ); 
 insert into country (place_name) 
 	values 
@@ -72,7 +72,7 @@ create table film_list (
 	primary key (id),
 	id 		serial 		not null,  
 	title 		varchar, 
-	description text, 
+	description 	text, 
 	country 	int 		references country (id), 
 	director 	int 		references directors(id) , 
 	actors 		text,
